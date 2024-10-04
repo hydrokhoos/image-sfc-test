@@ -1,0 +1,42 @@
+services:
+  ipfs:
+    image: ipfs/kubo
+    restart: always
+    networks:
+      - default
+      - ipfs_network
+
+  ndn:
+    image: hydrokhoos/ndn-all:arm
+    volumes:
+      - share-vol:/vol
+      - .:/src
+    restart: always
+    environment:
+      - SERVICE_NAME=blur
+      - SHARE_PATH=/vol
+      - TCP_MESSAGE_PORT=1234
+    networks:
+      - default
+      - ndn_network
+    command: bash -c "pip install -r /src/requirements.txt && nfd-start > /nfd.log && sleep infinity"
+
+  service:
+    image: python
+    volumes:
+     - share-vol:/vol
+     - .:/src
+    restart: always
+    environment:
+      - SHARE_PATH=/vol
+      - TCP_MESSAGE_PORT=1234
+    command: bash -c "pip install -r /src/requirements.txt && python3 /src/service.py"
+
+volumes:
+  share-vol:
+
+networks:
+  ndn_network:
+    external: true
+  ipfs_network:
+    external: true
