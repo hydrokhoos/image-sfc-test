@@ -5,6 +5,7 @@
 ```sh
 git clone https://github.com/hydrokhoos/image-sfc-test.git
 ```
+(以下2,3,4は```./start.sh```でも可能)
 
 ### 2. コンテナをデプロイ
 ```sh
