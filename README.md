@@ -18,7 +18,7 @@ docker-compose up -d
 
 ### 3. NFDの接続
 ```sh
-docker create network ndn_network
+docker network create ndn_network
 ```
 ```sh
 cd image-sfc-test/ipfs-sfc-blur
