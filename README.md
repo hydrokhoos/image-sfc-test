@@ -22,12 +22,12 @@ docker network create ndn_network
 ```
 ```sh
 cd image-sfc-test/ipfs-sfc-blur
-docker-compose exec ndn nfdc face create tcp4://ipfs-sfc-gray-ndn-1.ipfs_network
+docker-compose exec ndn nfdc face create tcp4://ipfs-sfc-gray-ndn-1.ndn_network
 docker-compose exec ndn nfdc route add / nexthop <生成されたFaceの番号>
 ```
 ```sh
 cd image-sfc-test/ipfs-sfc-gray
-docker-compose exec ndn nfdc face create tcp4://ipfs-sfc-gray-ndn-1.ipfs_network
+docker-compose exec ndn nfdc face create tcp4://ipfs-sfc-gray-ndn-1.ndn_network
 docker-compose exec ndn nfdc route add / nexthop <生成されたFaceの番号>
 ```
 
